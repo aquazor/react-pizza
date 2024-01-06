@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+:root {
+  --app-bg-color: #ffdf8c;
+  --gray-light: #f9f9f9;
+  --gray-dark: #282828;
+  --accent-color: #fe5f1e;
+
+  --font-base: 'Nunito', sans-serif;
+
+  --pizza-card-width: 300px;
+}
+
+#root {
+  padding-inline: 15px;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--app-bg-color);
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input {
+  font-family: var(--font-base);
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+}
+
+img {
+  vertical-align: middle;
+  object-fit: contain;
+}
+
+.section__padding {
+  padding: 40px;
+}
+
+.flex__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block-scroll,
+[block-scroll] {
+  overflow: hidden;
+}
+
+// .main__button {
+//   width: 100%;
+//   padding: 18px 0;
+//   font-size: 1rem;
+//   font-weight: 600;
+//   line-height: 1;
+//   color: #fff;
+//   border-radius: 18px;
+//   background-color: #9dd458;
+//   transition: background-color 100ms ease;
+
+//   &:hover {
+//     background-color: lighten(#9dd458, 4%);
+//   }
+
+//   &:active {
+//     background-color: darken(#9dd458, 4%);
+//   }
+// }
