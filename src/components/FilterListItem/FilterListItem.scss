@@ -1,0 +1,32 @@
+.filterList {
+  &__item {
+    button {
+      padding: 14px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.24px;
+
+      color: var(--gray-800);
+      background-color: var(--gray-100);
+      border-radius: 30px;
+      transition: background-color 200ms ease;
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--gray-800);
+          color: #fff;
+        }
+      }
+
+      &:focus-visible {
+        background-color: var(--gray-800);
+        color: #fff;
+      }
+
+      &:active {
+        background-color: var(--gray-700);
+        color: #fff;
+      }
+    }
+  }
+}

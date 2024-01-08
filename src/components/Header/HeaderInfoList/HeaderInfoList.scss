@@ -1,0 +1,36 @@
+.header {
+  &__infoList {
+    flex-shrink: 0;
+    width: 150px;
+    height: 50px;
+    background-color: var(--accent-color);
+    border-radius: 30px;
+    gap: 12px;
+
+    li {
+      color: #fff;
+      font-family: var(--font-base);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    &-divider {
+      width: 1px;
+      background-color: orange;
+      height: 25px;
+    }
+
+    &-cartInfo {
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 8px;
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+    }
+  }
+}

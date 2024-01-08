@@ -1,0 +1,14 @@
+.section__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  h2 {
+    font-family: var(--font-base);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.32px;
+    color: #000;
+  }
+}
