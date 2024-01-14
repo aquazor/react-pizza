@@ -1,5 +1,6 @@
 import logo from '../assets/logo.svg';
 import cart from '../assets/cart.svg';
+import cartBig from '../assets/cart-big.svg';
 import plus from '../assets/plus.svg';
 import plusRounded from '../assets/plus-rounded.svg';
 import minusRounded from '../assets/minus-rounded.svg';
@@ -18,4 +19,5 @@ export const images = {
   sortTriangle,
   trash,
   arrowLeft,
+  cartBig,
 };

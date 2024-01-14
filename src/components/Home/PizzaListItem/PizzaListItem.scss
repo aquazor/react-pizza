@@ -41,6 +41,7 @@
         &-item {
           flex: 1;
           border-radius: 5px;
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
 
           button {
             flex: 1;
@@ -52,7 +53,6 @@
             border-radius: 5px;
 
             transition: background-color 200ms ease;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
 
             @media (hover: hover) {
               &:hover {
@@ -60,7 +60,8 @@
               }
             }
 
-            &:focus-visible {
+            &:focus-visible,
+            &.active {
               background-color: #fff;
             }
 
@@ -88,7 +89,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         padding: 12px 14px;
 
         font-size: 1rem;
@@ -100,6 +101,16 @@
         border: 1px solid var(--accent-color);
         transition: all 200ms ease-in-out;
 
+        div:last-child {
+          width: 1.25rem;
+          height: 1.25rem;
+          border-radius: 50%;
+          background-color: var(--accent-color);
+          color: #fff;
+
+          transition: all 200ms ease-in-out;
+        }
+
         @media (hover: hover) {
           &:hover {
             background-color: var(--accent-color);
@@ -109,6 +120,11 @@
               path {
                 fill: #fff;
               }
+            }
+
+            div:last-child {
+              background-color: #fff;
+              color: var(--accent-color);
             }
           }
         }

@@ -1,51 +1,34 @@
 import './HomePage.scss';
-import { useState } from 'react';
-import { images } from '../../constants/images';
-import {
-  SectionHeading,
-  PizzaList,
-  FilterList,
-  SortList,
-  Button,
-} from '../../components';
-
-const filterOptions = [
-  { title: 'Все' },
-  { title: 'Мясные' },
-  { title: 'Вегетарианская' },
-  { title: 'Гриль' },
-  { title: 'Острые' },
-  { title: 'Закрытые' },
-];
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { SectionHeading, PizzaList, CategoriesList, SortPanel } from '../../components';
+import { BASE_URL, PIZZAS } from '../../constants/constants';
 
 const HomePage = () => {
-  const [sortValue, setSortValue] = useState('популярности');
-  const [sortPanelOpen, setSortPanelOpen] = useState(false);
+  const [pizzas, setPizzas] = useState([]);
+  const [categoryId, setCategoryId] = useState(0);
+  const [sortValue, setSortValue] = useState(0);
+
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      const { data } = await axios.get(`${BASE_URL}/${PIZZAS}`);
+      setPizzas(data);
+    };
+
+    fetchPizzas();
+  }, []);
 
   return (
     <section className="home section__padding">
       <header className="home__header">
-        <FilterList data={filterOptions} />
+        <CategoriesList value={categoryId} onChange={setCategoryId} />
 
-        <div className="home__header-sortPanel flex__center">
-          <div className="home__header-sortPanel__content flex__center">
-            <Button onClick={() => setSortPanelOpen((prev) => !prev)}>
-              <img src={images.sortTriangle} width={10} height={6} alt="Triangle" />
-              Сортировка по:
-            </Button>
-
-            <span>{sortValue}</span>
-          </div>
-
-          {sortPanelOpen && (
-            <SortList setSortPanelOpen={setSortPanelOpen} setSortValue={setSortValue} />
-          )}
-        </div>
+        <SortPanel value={sortValue} onChange={setSortValue} />
       </header>
 
       <SectionHeading title={'Все пиццы'} />
 
-      <PizzaList />
+      <PizzaList value={pizzas} sortValue={sortValue} categoryId={categoryId} />
     </section>
   );
 };
