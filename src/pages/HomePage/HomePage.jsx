@@ -1,8 +1,8 @@
 import './HomePage.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { SectionHeading, PizzaList, CategoriesList, SortPanel } from '../../components';
 import { BASE_URL, PIZZAS } from '../../constants/constants';
+import { SectionHeading, PizzaList, CategoriesList, SortPanel } from '../../components';
 
 const HomePage = () => {
   const [pizzas, setPizzas] = useState([]);

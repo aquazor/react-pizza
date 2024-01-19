@@ -49,6 +49,10 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 input {
   background-color: transparent;
   border: none;

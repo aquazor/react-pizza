@@ -1,5 +1,5 @@
 import './SortPanel.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { images } from '../../constants/images';
 import Button from '../Button/Button';
 import { SORT_OPTIONS } from '../../constants/constants';
@@ -7,13 +7,33 @@ import { SORT_OPTIONS } from '../../constants/constants';
 const SortPanel = ({ value, onChange }) => {
   const [sortPanelOpen, setSortPanelOpen] = useState(false);
 
+  const sortRef = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (!sortRef.current) {
+        return;
+      }
+
+      if (!sortRef.current.contains(event.target)) {
+        setSortPanelOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handler, true);
+
+    return () => {
+      document.removeEventListener('click', handler);
+    };
+  }, []);
+
   const handleOptionClick = (optionIndex) => {
     onChange(optionIndex);
     setSortPanelOpen(false);
   };
 
   return (
-    <div className="sortPanel flex__center">
+    <div ref={sortRef} className="sortPanel flex__center">
       <div className="sortPanel__content">
         <Button onClick={() => setSortPanelOpen((prev) => !prev)}>
           <img src={images.sortTriangle} width={10} height={6} alt="Triangle" />

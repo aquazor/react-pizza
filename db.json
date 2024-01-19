@@ -1,21 +1,18 @@
 {
   "pizzas": [
     {
-      "id": 0,
-      "imageUrl": "/images/pizza-04.png",
-      "title": "Маргарита",
-      "types": [0, 1],
-      "sizes": [25, 30],
-      "price": 350,
-      "category": 2,
-      "rating": 6
-    },
-    {
       "id": 1,
       "imageUrl": "/images/pizza-01.png",
       "title": "Чизбургер-пицца",
-      "types": [0, 1],
-      "sizes": [25, 30, 40],
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        25,
+        30,
+        40
+      ],
       "price": 500,
       "category": 1,
       "rating": 1
@@ -24,8 +21,13 @@
       "id": 2,
       "imageUrl": "/images/pizza-02.png",
       "title": "Сырная",
-      "types": [0],
-      "sizes": [25, 40],
+      "types": [
+        0
+      ],
+      "sizes": [
+        25,
+        40
+      ],
       "price": 450,
       "category": 2,
       "rating": 3
@@ -34,30 +36,82 @@
       "id": 3,
       "imageUrl": "/images/pizza-03.png",
       "title": "Мексиканская",
-      "types": [1],
-      "sizes": [25, 30, 40],
+      "types": [
+        1
+      ],
+      "sizes": [
+        25,
+        30,
+        40
+      ],
       "price": 350,
       "category": 3,
-      "rating": 1
+      "rating": 2
     },
     {
       "id": 4,
       "imageUrl": "/images/pizza-04.png",
-      "title": "Напо-пицца",
-      "types": [0, 1],
-      "sizes": [25, 30, 40],
-      "price": 425,
-      "category": 4,
-      "rating": 8
+      "title": "Маргарита",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        25,
+        30
+      ],
+      "price": 350,
+      "category": 2,
+      "rating": 6
     },
     {
       "id": 5,
-      "imageUrl": "/images/pizza-04.png",
-      "title": "Милано",
-      "types": [0, 1],
-      "sizes": [25, 30, 40],
+      "imageUrl": "/images/pizza-05.png",
+      "title": "Фермерская",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        25,
+        30
+      ],
+      "price": 350,
+      "category": 4,
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "imageUrl": "/images/pizza-06.png",
+      "title": "Салями",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        25,
+        30,
+        40
+      ],
+      "price": 425,
+      "category": 4,
+      "rating": 6
+    },
+    {
+      "id": 7,
+      "imageUrl": "/images/pizza-07.png",
+      "title": "Карбонара",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        25,
+        30,
+        40
+      ],
       "price": 475,
-      "category": 2,
+      "category": 1,
       "rating": 7
     }
   ],

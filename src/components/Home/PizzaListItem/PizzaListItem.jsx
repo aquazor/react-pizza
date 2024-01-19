@@ -1,12 +1,43 @@
 import './PizzaListItem.scss';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useThunk } from '../../../hooks/useThunk';
+import { addCartItem } from '../../../store';
 import Button from '../../Button/Button';
 import { TYPES } from '../../../constants/constants';
+import { nanoid } from 'nanoid';
 
 const PizzaListItem = ({ item }) => {
   const [activeType, setActiveType] = useState(0);
-  const [activeSize, setActiveSize] = useState(0);
+  const [activeSize, setActiveSize] = useState(item.sizes[0]);
   const [count, setCount] = useState(0);
+
+  const type = useRef(activeType);
+  const size = useRef(activeSize);
+
+  useEffect(() => {
+    if (type.current !== activeType || size.current !== activeSize) {
+      setCount(0);
+    }
+  }, [activeType, activeSize]);
+
+  const [addItem, isLoading, error] = useThunk(addCartItem);
+
+  const handleAddCartItem = (obj) => {
+    setCount((prev) => prev + 1);
+
+    const item = {
+      id: nanoid(),
+      item_id: obj.id,
+      title: obj.title,
+      price: obj.price,
+      imageUrl: obj.imageUrl,
+      size: activeSize,
+      type: activeType,
+      count: count + 1,
+    };
+
+    addItem(item);
+  };
 
   return (
     <li className="pizzaList__item">
@@ -33,12 +64,12 @@ const PizzaListItem = ({ item }) => {
         </ul>
 
         <ul className="pizzaList__item-options__list">
-          {item.sizes.map((size, i) => {
+          {item.sizes.map((size, index) => {
             return (
-              <li key={i} className="pizzaList__item-options__list-item flex__center">
+              <li key={index} className="pizzaList__item-options__list-item flex__center">
                 <Button
-                  className={activeSize === i ? 'active' : null}
-                  onClick={() => setActiveSize(i)}
+                  className={activeSize === size ? 'active' : null}
+                  onClick={() => setActiveSize(size)}
                 >
                   {size} см.
                 </Button>
@@ -50,7 +81,7 @@ const PizzaListItem = ({ item }) => {
 
       <div className="pizzaList__item-footer">
         <h4>от {item.price} ₸</h4>
-        <Button onClick={() => setCount((prev) => prev + 1)}>
+        <Button onClick={() => handleAddCartItem(item)}>
           <svg
             width="12"
             height="12"

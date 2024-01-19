@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 
-const Button = ({ className, children, ...rest }) => {
+const Button = ({ className, disabled, children, ...rest }) => {
   const finalClassName = classNames(className, 'flex__center');
 
   return (
-    <button className={finalClassName} type="button" {...rest}>
+    <button className={finalClassName} disabled={disabled} type="button" {...rest}>
       {children}
     </button>
   );

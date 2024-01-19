@@ -1,15 +1,25 @@
 import './CartPage.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { SectionHeading, Button, CartList } from '../../components';
+import { clearCart } from '../../store/slices/cartSlice';
 import { images } from '../../constants/images';
 
 const CartPage = () => {
+  const dispatch = useDispatch();
+
+  const { cartItemsCount, cartItemsPrice } = useSelector((state) => state.cart);
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   const icon = <img src={images.cartBig} alt="Cart Icon" />;
 
   return (
     <section className="cart section__padding">
       <SectionHeading className="cart__heading" title={'Корзина'} icon={icon}>
-        <Button>
+        <Button onClick={() => handleClearCart()}>
           <img src={images.trash} width={18} height={18} alt="Trash Icon" />
           Очистить корзину
         </Button>
@@ -19,10 +29,10 @@ const CartPage = () => {
 
       <ul className="cart__summary">
         <li className="cart__summary-quantity">
-          Всего пицц: <strong>3 шт.</strong>
+          Всего пицц: <strong>{cartItemsCount} шт.</strong>
         </li>
         <li className="cart__summary-amount">
-          Сумма заказа: <strong>900 ₽</strong>
+          Сумма заказа: <strong>{cartItemsPrice}</strong>
         </li>
       </ul>
 

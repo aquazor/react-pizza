@@ -1,22 +1,42 @@
-import './CartListItem.scss';
-import { images } from '../../../constants/images';
+import { useDispatch } from 'react-redux';
+import { useThunk } from '../../../hooks/useThunk';
+import { removeCartItem } from '../../../store';
+import { incrementItemCount, dencrementItemCount } from '../../../store/slices/cartSlice';
 import Button from '../../Button/Button';
+import { TYPES } from '../../../constants/constants';
 
 const CartListItem = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const [removeItem, isLoading, error] = useThunk(removeCartItem);
+
+  const handleRemoveItem = (item) => {
+    removeItem(item);
+  };
+
+  const handleIncrementItemCount = (item) => {
+    dispatch(incrementItemCount(item));
+  };
+
+  const handleDecrementItemCount = (item) => {
+    dispatch(dencrementItemCount(item));
+  };
+
   return (
     <li className="cartList__item">
       <div className="cartList__item-info">
-        <img src={images.logo} width={80} height={80} alt="pizza" />
+        <img src={`${item.imageUrl}`} width={80} height={80} alt="Pizza" />
+
         <div className="cartList__item-info__description">
           <h4 className="cartList__item-info__description-name">{item.title}</h4>
           <p className="cartList__item-info__description-options">
-            {item.type}, {item.size} см.
+            {TYPES[item.type]}, {item.size} см.
           </p>
         </div>
       </div>
 
       <div className="cartList__item-quantity">
-        <Button>
+        <Button disabled={item.count <= 0} onClick={() => handleDecrementItemCount(item)}>
           <svg
             width="32"
             height="32"
@@ -39,7 +59,7 @@ const CartListItem = ({ item }) => {
           </svg>
         </Button>
         <span>{item.count}</span>
-        <Button>
+        <Button onClick={() => handleIncrementItemCount(item)}>
           <svg
             width="32"
             height="32"
@@ -68,7 +88,7 @@ const CartListItem = ({ item }) => {
       </div>
 
       <div className="cartList__item-button">
-        <Button>
+        <Button onClick={() => handleRemoveItem(item)}>
           <svg
             width="32"
             height="32"
